@@ -40,12 +40,9 @@ namespace DC.Web.Ui
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            //var authSettings = _config.GetSection("AuthenticationSettings").Get<AuthenticationSettings>();
+            var authSettings = _config.GetSection("AuthenticationSettings").Get<AuthenticationSettings>();//.Get<AuthenticationSettings>();
 
-            var authSettings = new AuthenticationSettings();
-            authSettings.WtRealm = _config["AuthenticationSettings:realm"];
-            authSettings.MetadataAddress = _config["AuthenticationSettings:metadata"];
-
+            //services.Configure<IAuthenticationSettings>(_config.GetSection("AuthenticationSettings"));
             if (_environment.IsDevelopment())
             {
                 services.AddMvc(options =>
