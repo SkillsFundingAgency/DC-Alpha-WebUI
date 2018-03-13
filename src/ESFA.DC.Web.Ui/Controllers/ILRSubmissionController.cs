@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DC.Web.Ui.ClaimTypes;
 using DC.Web.Ui.Extensions;
 using DC.Web.Ui.Models;
+using DC.Web.Ui.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,15 +17,19 @@ namespace DC.Web.Ui.Controllers
     [Authorize(Policy = PolicyTypes.FileSubmission)]
     public class ILRSubmissionController : Controller
     {
+        private IUkprnClaimsHandlerService _ukprnClaimsHandler;
+        public ILRSubmissionController(IUkprnClaimsHandlerService ukprnClaimsHandler)
+        {
+            _ukprnClaimsHandler = ukprnClaimsHandler;
+        }
 
-      //  [Route("~/sign-wsfed")]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Submit(IFormFile file, bool IsShredAndProcess)
+        public async Task<IActionResult> Submit(IFormFile file)
         {
             CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse("connectionstring");
             CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
@@ -38,7 +43,6 @@ namespace DC.Web.Ui.Controllers
                 CorrelationId = correlationId,
                 ContainerReference = "ilr-files",
                 Filename = $" {Path.GetFileNameWithoutExtension(file.FileName).AppendRandomString(8)}.xml",
-                IsShredAndProcess = IsShredAndProcess
             };
           
             CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(model.Filename);
