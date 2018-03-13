@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Submit an ILR as training provider";
+    ViewBag.PageId = "home-page";
+    ViewBag.HideNavBar = true;
+}
+
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <h1 class="heading-xlarge">Submit an ILR as training provider</h1>
+        <p>This service is for training providers registered with the Education and Skills Funding Agency to submit ILR data</p>
+        <h2 class="heading-medium">Before you start</h2>
+        <p>You need to have an account with the government’s Information Management Services system (IdAMS) to use this.</p>
+        <p>If your organisation doesn't already have an IdAMS account, you’ll get your account details when you <a href="https://www.gov.uk/guidance/register-of-apprenticeship-training-providers" target="_blank" rel="external">register as an apprenticeship training provider</a>.</p>
+
+        <div class="form-group">
+            <a href="/ilrsubmission" class="button button-start" title="Start now" aria-label="Start now">Start now</a>
+        </div>
+        @User.Identity.IsAuthenticated
+
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Submit an ILR as training provider";
+    ViewBag.PageId = "home-page";
+    ViewBag.HideNavBar = true;
+}
+
+<div class="grid-row">
+
+
+    @foreach(var claim in User.Claims  )
+    {<p>Line @claim.Type : @claim.Value</p>}
+
+</div>
