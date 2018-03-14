@@ -3,13 +3,18 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.WsFederation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
+using DC.Web.Ui.Settings.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace DC.Web.Ui.StartupConfiguration
 {
     public static class AuthenticationStartup
     {
-        public static void AddAndConfigureAuthentication(this IServiceCollection services, IAuthenticationSettings configuration)
+        public static void AddAndConfigureAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+
+            var authSettings = configuration.GetSection("AuthenticationSettings").Get<AuthenticationSettings>();
+
             services.AddAuthentication(sharedOptions =>
                 {
                     sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -19,8 +24,8 @@ namespace DC.Web.Ui.StartupConfiguration
                 })
                 .AddWsFederation(options =>
                 {
-                    options.Wtrealm = configuration.WtRealm;
-                    options.MetadataAddress = configuration.MetadataAddress;
+                    options.Wtrealm = authSettings.WtRealm;
+                    options.MetadataAddress = authSettings.MetadataAddress;
 
                     options.Events.OnSecurityTokenValidated = OnTokenValidated;
                     options.CallbackPath = "/Account/SignedIn";

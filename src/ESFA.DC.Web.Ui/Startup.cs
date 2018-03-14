@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using DC.Web.Ui.Ioc;
-using DC.Web.Ui.Settings;
 using DC.Web.Ui.StartupConfiguration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,21 +8,22 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Security.Principal;
+using System.IO;
 
 namespace DC.Web.Ui
 {
     public class Startup
     {
-        private readonly IConfigurationRoot _config;
+        private readonly IConfiguration _config;
         private readonly IHostingEnvironment _environment;
         private IContainer _applicationContainer;
-
 
         public Startup(IHostingEnvironment env)
         {
             _environment = env;
             var builder = new ConfigurationBuilder();
+
+            builder.SetBasePath(Directory.GetCurrentDirectory());
 
             if (env.IsDevelopment())
             {
@@ -40,9 +40,6 @@ namespace DC.Web.Ui
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            var authSettings = _config.GetSection("AuthenticationSettings").Get<AuthenticationSettings>();//.Get<AuthenticationSettings>();
-
-            //services.Configure<IAuthenticationSettings>(_config.GetSection("AuthenticationSettings"));
             if (_environment.IsDevelopment())
             {
                 services.AddMvc(options =>
@@ -56,10 +53,8 @@ namespace DC.Web.Ui
             }
 
             services.AddSession();
-
-            services.AddAndConfigureAuthentication(authSettings);
+            services.AddAndConfigureAuthentication(_config);
             services.AddAndConfigureAuthorisation();
-
             services.AddMvc().AddControllersAsServices();
 
             return ConfigureAutofac(services);
@@ -68,10 +63,13 @@ namespace DC.Web.Ui
         private IServiceProvider ConfigureAutofac(IServiceCollection services)
         {
             var containerBuilder = new ContainerBuilder();
-            containerBuilder.RegisterModule<AutofacModule>();
-            containerBuilder.Populate(services);
 
+            containerBuilder.RegisterModule<ServiceRegistrations>();
+            containerBuilder.SetupConfigurations(_config);
+
+            containerBuilder.Populate(services);
             _applicationContainer = containerBuilder.Build();
+
             return new AutofacServiceProvider(_applicationContainer);
         }
 

@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authentication;
 
 namespace DC.Web.Ui.Controllers
 {
-    [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
         [HttpGet]
@@ -25,7 +24,7 @@ namespace DC.Web.Ui.Controllers
         public async Task<IActionResult> PostSignIn()
         {
             var claims = HttpContext.User.Claims;
-            return RedirectToAction("ILRSubmission");
+            return RedirectToAction("Index","ILRSubmission");
            
 
         }

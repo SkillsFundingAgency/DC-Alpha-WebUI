@@ -11,7 +11,7 @@ namespace DC.Web.Ui.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                RedirectToAction("IlrSubmission");
+                RedirectToAction("Index", "IlrSubmission");
             }
          
             return View();

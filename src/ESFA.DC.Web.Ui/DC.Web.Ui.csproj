@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="autofac" Version="4.6.2" />
+    <PackageReference Include="Autofac.Configuration" Version="4.0.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.1" />
     <PackageReference Include="ESFA.DC.ILR.1718.Model" Version="0.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
@@ -26,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DC.Web.Ui.Services\DC.Web.Ui.Services.csproj" />
+    <ProjectReference Include="..\DC.Web.Ui.Settings\DC.Web.Ui.Settings.csproj" />
   </ItemGroup>
 
   <ItemGroup>
