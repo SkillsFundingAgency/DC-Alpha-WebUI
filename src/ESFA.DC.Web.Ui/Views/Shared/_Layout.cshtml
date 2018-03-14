@@ -30,6 +30,8 @@
     <meta name="theme-color" content="#0b0c0c" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="~/assets/images/opengraph-image.png">
+    <link rel="stylesheet" media="all" href="~/css/site.css" />
+
 
 
 </head>
@@ -76,6 +78,12 @@
                 <li> <a href="/IlrSubmission">ILR Submission</a></li>
             </ol>
         </div>
+        <h1 class="heading-large">
+            Coventry City College
+            <span class="heading-secondary">
+                UKPRN: 10005678
+            </span>
+        </h1>
      
         @RenderBody()
     </div>
@@ -99,7 +107,7 @@
         </div>
     </footer>
     <div id="global-app-error" class="app-error hidden"></div>
-    <script src="~/assets/javascripts/govuk-template.js"></script>
+    <script src="~/assets/javascripts/govuk/govuk-template.js"></script>
 
 
     <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>

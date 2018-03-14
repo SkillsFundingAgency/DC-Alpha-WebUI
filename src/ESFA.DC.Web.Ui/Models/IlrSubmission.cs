@@ -10,6 +10,7 @@ namespace DC.Web.Ui.Models
         public string Filename;
         public string ContainerReference;
         public Guid CorrelationId;
-
+        public DateTime SubmissionDateTime { get; set; }
+        public decimal FileSize { get; set; }
     }
 }

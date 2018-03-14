@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DC.Web.Ui.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace DC.Web.Ui.Controllers
 {
     public class ConfirmationController : Controller
     {
-        public IActionResult Index(string correlationId)
+        public IActionResult Index()
         {
-            ViewData["CorrelationId"] = correlationId;
+            var ilrSubmission = JsonConvert.DeserializeObject<IlrSubmission>(TempData["ilrSubmission"].ToString());
 
-            return View();
+            return View(ilrSubmission);
         }
     }
 }

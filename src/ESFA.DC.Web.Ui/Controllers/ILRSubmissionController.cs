@@ -45,6 +45,8 @@ namespace DC.Web.Ui.Controllers
                 CorrelationId = Guid.NewGuid(),
                 ContainerReference = _cloudStorageSettings.ContainerName,
                 Filename = $" {Path.GetFileNameWithoutExtension(file.FileName).AppendRandomString(5)}.xml",
+                SubmissionDateTime = DateTime.Now,
+                FileSize =(decimal)file.Length /1024
             };
 
             CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(ilrFile.Filename);
@@ -55,7 +57,11 @@ namespace DC.Web.Ui.Controllers
             }
 
             await _serviceBusQueue.SendMessagesAsync(JsonConvert.SerializeObject(ilrFile), ilrFile.CorrelationId.ToString());
-            return RedirectToAction("Index","Confirmation", new { ilrFile.CorrelationId });
+
+            ilrFile.Filename = file.FileName;
+            TempData["ilrSubmission"] = JsonConvert.SerializeObject(ilrFile);
+            
+            return RedirectToAction("Index","Confirmation");
         }
     }
 }
