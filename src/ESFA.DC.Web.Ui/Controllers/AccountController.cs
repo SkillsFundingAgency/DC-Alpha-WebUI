@@ -23,10 +23,7 @@ namespace DC.Web.Ui.Controllers
         [HttpGet]
         public async Task<IActionResult> PostSignIn()
         {
-            var claims = HttpContext.User.Claims;
-            return RedirectToAction("Index","ILRSubmission");
-           
-
+            return RedirectToAction("Index", "ILRSubmission");
         }
     }
 }

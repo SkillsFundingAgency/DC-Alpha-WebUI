@@ -57,6 +57,7 @@ namespace DC.Web.Ui
             services.AddAndConfigureAuthorisation();
             services.AddMvc().AddControllersAsServices();
 
+            
             return ConfigureAutofac(services);
         }
 

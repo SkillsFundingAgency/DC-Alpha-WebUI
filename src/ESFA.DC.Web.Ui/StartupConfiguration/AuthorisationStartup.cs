@@ -19,7 +19,7 @@ namespace DC.Web.Ui.StartupConfiguration
             services.AddAuthorization(options =>
             {
                 //options.AddPolicy(PolicyTypes.Ukprn, policy => policy.Requirements.Add(new UkprnRequirement()));
-                options.AddPolicy(PolicyTypes.FileSubmission, policy => policy.RequireClaim(IdamsClaimTypes.UkprnClaim));
+                options.AddPolicy(PolicyTypes.FileSubmission, policy => policy.RequireClaim(IdamsClaimTypes.Ukprn));
             });
         }
 

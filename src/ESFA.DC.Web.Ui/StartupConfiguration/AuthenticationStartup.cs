@@ -28,9 +28,9 @@ namespace DC.Web.Ui.StartupConfiguration
                     options.MetadataAddress = authSettings.MetadataAddress;
 
                     options.Events.OnSecurityTokenValidated = OnTokenValidated;
-                    options.CallbackPath = "/Account/SignedIn";
+                    options.CallbackPath = "/Account/PostSignIn";
                 })
-                .AddCookie(options => { options.ReturnUrlParameter = "/Account/SignedIn"; });
+                .AddCookie(options => { options.ReturnUrlParameter = "/Account/PostSignIn"; });
         }
 
         private static Task OnTokenValidated(SecurityTokenValidatedContext context)
