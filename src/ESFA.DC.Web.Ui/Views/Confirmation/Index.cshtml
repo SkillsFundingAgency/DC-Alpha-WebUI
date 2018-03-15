@@ -43,13 +43,15 @@
                 </tr>
             </tbody>
         </table>
-
+        <p>
+            @Html.ActionLink("Click here to see detailed status", "Index", "AppLogs", new { correlationId = Model.CorrelationId })
+        </p>
         <h2 class="heading-medium">What happens next?</h2>
         <p>You will receive an email notification once your file has been processed.</p>
 
         <p>If any warnings or errors are found in the data you submitted they will be listed in a report file which can be downloaded once your submission has been processed.</p>
 
-        <p><a class="button" href="/version-2/data-submissions/" role="button" id="upload-complete-button">Finished</a></p>
+        <p><a class="button" href="/IlrSubmission" role="button" id="upload-complete-button">Finished</a></p>
     </div>
 </div>
 

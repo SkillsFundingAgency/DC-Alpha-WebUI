@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
+using DC.Web.Ui.Services.AppLogs;
+using Microsoft.EntityFrameworkCore;
 
 namespace DC.Web.Ui
 {
@@ -53,11 +55,14 @@ namespace DC.Web.Ui
             }
 
             services.AddSession();
+
+            //Custom services
+            services.AddAndConfigureDataAccess(_config);
             services.AddAndConfigureAuthentication(_config);
             services.AddAndConfigureAuthorisation();
+
             services.AddMvc().AddControllersAsServices();
 
-            
             return ConfigureAutofac(services);
         }
 
@@ -73,6 +78,8 @@ namespace DC.Web.Ui
 
             return new AutofacServiceProvider(_applicationContainer);
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

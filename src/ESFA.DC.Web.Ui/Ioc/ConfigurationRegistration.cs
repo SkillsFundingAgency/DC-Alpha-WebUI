@@ -16,6 +16,10 @@ namespace DC.Web.Ui.Ioc
             builder.Register(c =>
                     configuration.GetSection("ServiceBusQueueSettings").Get<ServiceBusQueueSettings>())
                 .As<ServiceBusQueueSettings>().SingleInstance();
+
+            builder.Register(c =>
+                    configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>())
+                .As<ConnectionStrings>().SingleInstance();
         }
     }
 }

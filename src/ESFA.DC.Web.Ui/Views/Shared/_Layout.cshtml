@@ -35,7 +35,7 @@
         <link rel="stylesheet" media="all" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" media="all" href="~/css/site.min.css"  asp-append-version="true"/>
+        <link rel="stylesheet" media="all" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 
 
@@ -76,7 +76,14 @@
 
 
     <div id="global-header-bar"></div>
+
     <div id="content" role="main">
+        <div class="phase-banner">
+            <p>
+                <strong class="phase-tag">Alpha</strong>
+                <span>This service is being used for testing only.</span>
+            </p>
+        </div>
         <div class="breadcrumbs">
             <ol>
                 <li><a href="/">GOV.UK </a></li>
@@ -84,14 +91,14 @@
                 <li> <a href="/IlrSubmission">ILR Submission</a></li>
             </ol>
         </div>
-        @if(@User.Identity.IsAuthenticated)
-        { 
-        <h1 class="heading-large">
-           @User.DisplayName()
-            <span class="heading-secondary">
-                UKPRN:  @User.Ukprn()
-            </span>
-        </h1>
+        @if (@User.Identity.IsAuthenticated)
+        {
+            <h1 class="heading-large">
+                @User.DisplayName()
+                <span class="heading-secondary">
+                    UKPRN: @User.Ukprn()
+                </span>
+            </h1>
         }
         @RenderBody()
     </div>
