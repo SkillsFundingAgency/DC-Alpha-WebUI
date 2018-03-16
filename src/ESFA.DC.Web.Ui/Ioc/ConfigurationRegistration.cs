@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using DC.Web.Ui.Extensions;
 using DC.Web.Ui.Services.Models;
 using DC.Web.Ui.Settings.Models;
 using Microsoft.Extensions.Configuration;
@@ -9,16 +10,15 @@ namespace DC.Web.Ui.Ioc
     {
         public static void SetupConfigurations(this ContainerBuilder builder, IConfiguration configuration)
         {
-            builder.Register(c =>
-                configuration.GetSection("CloudStorageSettings").Get<CloudStorageSettings>())
+            builder.Register(c =>configuration.GetConfigSection<CloudStorageSettings>())
                 .As<CloudStorageSettings>().SingleInstance();
 
             builder.Register(c =>
-                    configuration.GetSection("ServiceBusQueueSettings").Get<ServiceBusQueueSettings>())
+                    configuration.GetConfigSection<ServiceBusQueueSettings>())
                 .As<ServiceBusQueueSettings>().SingleInstance();
 
             builder.Register(c =>
-                    configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>())
+                    configuration.GetConfigSection<ConnectionStrings>())
                 .As<ConnectionStrings>().SingleInstance();
         }
     }

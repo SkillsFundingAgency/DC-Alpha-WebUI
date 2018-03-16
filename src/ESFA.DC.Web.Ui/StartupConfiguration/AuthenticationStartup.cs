@@ -10,10 +10,8 @@ namespace DC.Web.Ui.StartupConfiguration
 {
     public static class AuthenticationStartup
     {
-        public static void AddAndConfigureAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAndConfigureAuthentication(this IServiceCollection services, AuthenticationSettings authSettings)
         {
-
-            var authSettings = configuration.GetSection("AuthenticationSettings").Get<AuthenticationSettings>();
 
             services.AddAuthentication(sharedOptions =>
                 {

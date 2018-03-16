@@ -9,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
+using DC.Web.Ui.Extensions;
 using DC.Web.Ui.Services.AppLogs;
+using DC.Web.Ui.Settings.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DC.Web.Ui
@@ -42,7 +44,9 @@ namespace DC.Web.Ui
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            if (_environment.IsDevelopment())
+            var authSettings = _config.GetConfigSection<AuthenticationSettings>();
+
+            if (!authSettings.Enabled)
             {
                 services.AddMvc(options =>
                 {
@@ -58,7 +62,7 @@ namespace DC.Web.Ui
 
             //Custom services
             services.AddAndConfigureDataAccess(_config);
-            services.AddAndConfigureAuthentication(_config);
+            services.AddAndConfigureAuthentication(authSettings);
             services.AddAndConfigureAuthorisation();
 
             services.AddMvc().AddControllersAsServices();
