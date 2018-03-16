@@ -9,6 +9,11 @@ namespace DC.Web.Ui.Services.AppLogs
     {
         private readonly AppLogsContext _context;
 
+        //for testing
+        public AppLogsReader()
+        {
+            
+        }
         public AppLogsReader(AppLogsContext appLogsContext)
         {
             _context = appLogsContext;

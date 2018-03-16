@@ -3,7 +3,7 @@ using DC.Web.Ui.Services.Models;
 
 namespace DC.Web.Ui.Services.Interfaces
 {
-    public interface IUkprnClaimsHandlerService
+    public interface IUkprnClaimHandlerService
     {
         bool ClaimAccepted(IEnumerable<IdamsClaim> claims);
     }

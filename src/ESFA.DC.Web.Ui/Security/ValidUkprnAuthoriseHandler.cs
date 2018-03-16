@@ -11,8 +11,8 @@ namespace DC.Web.Ui.Security
 {
     public class ValidUkprnAuthoriseHandler : AuthorizationHandler<UkprnRequirement>
     {
-        private IUkprnClaimsHandlerService _ukprnClaimsHandler;
-        public ValidUkprnAuthoriseHandler(IUkprnClaimsHandlerService ukprnClaimsHandler)
+        private IUkprnClaimHandlerService _ukprnClaimsHandler;
+        public ValidUkprnAuthoriseHandler(IUkprnClaimHandlerService ukprnClaimsHandler)
         {
             _ukprnClaimsHandler = ukprnClaimsHandler;
         }

@@ -73,9 +73,9 @@ namespace DC.Web.Ui
         private IServiceProvider ConfigureAutofac(IServiceCollection services)
         {
             var containerBuilder = new ContainerBuilder();
+            containerBuilder.SetupConfigurations(_config);
 
             containerBuilder.RegisterModule<ServiceRegistrations>();
-            containerBuilder.SetupConfigurations(_config);
 
             containerBuilder.Populate(services);
             _applicationContainer = containerBuilder.Build();
