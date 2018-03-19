@@ -14,7 +14,12 @@ namespace DC.Web.Ui.Controllers
     {
         public IActionResult Index()
         {
-            var ilrSubmission = JsonConvert.DeserializeObject<IlrSubmission>(TempData["ilrSubmission"].ToString());
+            IlrSubmission ilrSubmission = null;
+            var tempData = TempData["ilrSubmission"];
+            if (tempData  != null)
+            {
+                ilrSubmission = JsonConvert.DeserializeObject<IlrSubmission>(tempData.ToString());
+            }
 
             return View(ilrSubmission);
         }

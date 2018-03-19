@@ -21,7 +21,7 @@ namespace DC.Web.Ui.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> PostSignIn()
+        public IActionResult PostSignIn()
         {
             return RedirectToAction("Index", "ILRSubmission");
         }
