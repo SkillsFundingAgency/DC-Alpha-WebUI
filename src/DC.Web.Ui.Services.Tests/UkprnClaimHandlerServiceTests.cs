@@ -1,6 +1,5 @@
-﻿using DC.Web.Ui.Services.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using DC.Web.Ui.Services.ClaimHandlerService;
 using DC.Web.Ui.Services.Models;
 using FluentAssertions;
 using Xunit;

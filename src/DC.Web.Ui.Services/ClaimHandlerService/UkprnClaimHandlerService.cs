@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using DC.Web.Ui.Services.Interfaces;
 using DC.Web.Ui.Services.Models;
 
-namespace DC.Web.Ui.Services
+namespace DC.Web.Ui.Services.ClaimHandlerService
 {
     public class UkprnClaimHandlerService : IUkprnClaimHandlerService
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DC.Web.Ui.ClaimTypes;
-using DC.Web.Ui.Services.Interfaces;
+using DC.Web.Ui.Services.ClaimHandlerService;
 using DC.Web.Ui.Services.Models;
 using Microsoft.AspNetCore.Authorization;
 

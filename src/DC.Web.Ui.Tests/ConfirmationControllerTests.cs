@@ -1,5 +1,7 @@
 ﻿using DC.Web.Ui.Controllers;
 using DC.Web.Ui.Models;
+using DC.Web.Ui.Services.Models;
+using DC.Web.Ui.ViewModels;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,14 +21,14 @@ namespace DC.Web.Ui.Tests
 
             var httpContext = new DefaultHttpContext();
             var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
-            tempData["ilrSubmission"] = JsonConvert.SerializeObject(new IlrSubmission());
+            tempData["ilrSubmission"] = JsonConvert.SerializeObject(new IlrFileViewModel());
             controller.TempData = tempData;
 
             var result = controller.Index();
 
             result.Should().BeOfType(typeof(ViewResult));
             var modelresult = ((ViewResult)result).Model;
-            Assert.IsAssignableFrom<IlrSubmission>(modelresult);
+            Assert.IsAssignableFrom<IlrFileViewModel>(modelresult);
         }
 
         [Fact]

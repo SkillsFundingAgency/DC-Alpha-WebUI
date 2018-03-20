@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using DC.Web.Ui.Services.Models;
 
-namespace DC.Web.Ui.Services.Interfaces
+namespace DC.Web.Ui.Services.AppLogs
 {
     public interface IAppLogsReader
     {

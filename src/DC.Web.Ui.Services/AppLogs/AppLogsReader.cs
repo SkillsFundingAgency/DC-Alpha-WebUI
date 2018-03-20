@@ -1,5 +1,4 @@
-﻿using DC.Web.Ui.Services.Interfaces;
-using DC.Web.Ui.Services.Models;
+﻿using DC.Web.Ui.Services.Models;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace DC.Web.Ui.Models
+namespace DC.Web.Ui.ViewModels
 {
-    public class IlrSubmission
+    public class IlrFileViewModel
     {
         public string Filename;
-        public string ContainerReference;
         public Guid CorrelationId;
         public DateTime SubmissionDateTime { get; set; }
         public decimal FileSize { get; set; }

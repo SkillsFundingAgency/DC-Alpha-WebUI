@@ -12,7 +12,7 @@ using Moq;
 using Xunit;
 using System.IO;
 using System.Linq;
-using DC.Web.Ui.Services.Interfaces;
+using DC.Web.Ui.Services.AppLogs;
 using DC.Web.Ui.Services.Models;
 
 namespace DC.Web.Ui.Tests

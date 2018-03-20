@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -20,7 +21,9 @@ namespace DC.Web.Ui.Tests
         public async Task GetAsync_ReturnsUnauthorizedResult(string url)
         {
             // Arrange
-            var server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
+            var server = new TestServer(new WebHostBuilder()
+                .UseStartup<Startup>());
+            
             var client = server.CreateClient();
             
             var response = await client.GetAsync(url);
@@ -29,4 +32,6 @@ namespace DC.Web.Ui.Tests
             
         }
     }
+
+    
 }
