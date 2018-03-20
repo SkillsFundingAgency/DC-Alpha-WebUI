@@ -34,6 +34,15 @@ namespace DC.Web.Ui.Controllers
         [RequestSizeLimit(500_000_000)]
         public async Task<IActionResult> Submit(IFormFile file)
         {
+            if (file == null)
+            {
+                return Index();
+            }
+
+            if (file.Length == 0)
+            {
+                return Index();
+            }
 
             var fileNameForSubmssion = $" {Path.GetFileNameWithoutExtension(file.FileName).AppendRandomString(5)}.xml";
             var correlationId = Guid.NewGuid();
