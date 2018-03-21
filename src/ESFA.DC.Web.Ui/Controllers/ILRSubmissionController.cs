@@ -1,30 +1,28 @@
 ﻿using DC.Web.Ui.ClaimTypes;
-using DC.Web.Ui.Extensions;
 using DC.Web.Ui.Models;
-using DC.Web.Ui.Services.Models;
 using DC.Web.Ui.Services.ServiceBus;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using DC.Web.Ui.Extensions;
+using DC.Web.Ui.Services.SubmissionService;
 using DC.Web.Ui.Settings.Models;
+using DC.Web.Ui.ViewModels;
 
 namespace DC.Web.Ui.Controllers
 {
     [Authorize(Policy = PolicyTypes.FileSubmission)]
     public class ILRSubmissionController : Controller
     {
-        private readonly IServiceBusQueue _serviceBusQueue;
-        private readonly CloudStorageSettings _cloudStorageSettings;
-        public ILRSubmissionController(IServiceBusQueue serviceBusQueue, CloudStorageSettings cloudStorageSettings)
+        private readonly ISubmissionService _submissionService;
+
+        public ILRSubmissionController(ISubmissionService submissionService)
         {
-            _serviceBusQueue = serviceBusQueue;
-            _cloudStorageSettings = cloudStorageSettings;
+            _submissionService = submissionService;
         }
 
         public IActionResult Index()
@@ -36,32 +34,39 @@ namespace DC.Web.Ui.Controllers
         [RequestSizeLimit(500_000_000)]
         public async Task<IActionResult> Submit(IFormFile file)
         {
-            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_cloudStorageSettings.ConnectionString);
-            CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
-            CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(_cloudStorageSettings.ContainerName);
-
-            var ilrFile = new IlrSubmission()
+            if (file == null)
             {
-                CorrelationId = Guid.NewGuid(),
-                ContainerReference = _cloudStorageSettings.ContainerName,
-                Filename = $" {Path.GetFileNameWithoutExtension(file.FileName).AppendRandomString(5)}.xml",
+                return Index();
+            }
+
+            if (file.Length == 0)
+            {
+                return Index();
+            }
+
+            var fileNameForSubmssion = $" {Path.GetFileNameWithoutExtension(file.FileName).AppendRandomString(5)}.xml";
+            var correlationId = Guid.NewGuid();
+
+            var ilrFile = new IlrFileViewModel()
+            {
+                Filename = file.FileName,
                 SubmissionDateTime = DateTime.Now,
-                FileSize =(decimal)file.Length /1024
+                FileSize =(decimal)file.Length /1024,
+                CorrelationId = correlationId
             };
-
-            CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(ilrFile.Filename);
-
-            using (var outputStream = await cloudBlockBlob.OpenWriteAsync())
+           
+            //push file to Storage
+            using (var outputStream = await _submissionService.GetBlobStream(fileNameForSubmssion))
             {
                 await file.CopyToAsync(outputStream);
             }
 
-            await _serviceBusQueue.SendMessagesAsync(JsonConvert.SerializeObject(ilrFile), ilrFile.CorrelationId.ToString());
+            //add to the queue
+            await _submissionService.AddMessageToQueue(fileNameForSubmssion, correlationId);
 
-            ilrFile.Filename = file.FileName;
             TempData["ilrSubmission"] = JsonConvert.SerializeObject(ilrFile);
-            
             return RedirectToAction("Index","Confirmation");
         }
+
     }
 }

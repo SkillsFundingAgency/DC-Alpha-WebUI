@@ -31,7 +31,12 @@
     <meta name="theme-color" content="#0b0c0c" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="~/assets/images/opengraph-image.png">
-    <link rel="stylesheet" media="all" href="~/css/site.css" />
+    <environment include="Development">
+        <link rel="stylesheet" media="all" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" media="all" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
 
 
 
@@ -71,22 +76,30 @@
 
 
     <div id="global-header-bar"></div>
+
     <div id="content" role="main">
+        <div class="phase-banner">
+            <p>
+                <strong class="phase-tag">Alpha</strong>
+                <span>This service is being used for Alpha testing only.</span>
+            </p>
+        </div>
         <div class="breadcrumbs">
             <ol>
                 <li><a href="/">GOV.UK </a></li>
                 <li><a href="/"> Home </a></li>
                 <li> <a href="/IlrSubmission">ILR Submission</a></li>
+                <li> <a href="/Claims">User Claims</a></li>
             </ol>
         </div>
-        @if(@User.Identity.IsAuthenticated)
-        { 
-        <h1 class="heading-large">
-           @User.DisplayName()
-            <span class="heading-secondary">
-                UKPRN:  @User.Ukprn()
-            </span>
-        </h1>
+        @if (@User.Identity.IsAuthenticated)
+        {
+            <h1 class="heading-large">
+                @User.DisplayName()
+                <span class="heading-secondary">
+                    UKPRN: @User.Ukprn()
+                </span>
+            </h1>
         }
         @RenderBody()
     </div>

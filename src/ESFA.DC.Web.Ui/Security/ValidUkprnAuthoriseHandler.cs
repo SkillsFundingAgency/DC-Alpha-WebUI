@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DC.Web.Ui.ClaimTypes;
-using DC.Web.Ui.Services.Interfaces;
+using DC.Web.Ui.Services.ClaimHandlerService;
 using DC.Web.Ui.Services.Models;
 using Microsoft.AspNetCore.Authorization;
 
@@ -11,8 +11,8 @@ namespace DC.Web.Ui.Security
 {
     public class ValidUkprnAuthoriseHandler : AuthorizationHandler<UkprnRequirement>
     {
-        private IUkprnClaimsHandlerService _ukprnClaimsHandler;
-        public ValidUkprnAuthoriseHandler(IUkprnClaimsHandlerService ukprnClaimsHandler)
+        private IUkprnClaimHandlerService _ukprnClaimsHandler;
+        public ValidUkprnAuthoriseHandler(IUkprnClaimHandlerService ukprnClaimsHandler)
         {
             _ukprnClaimsHandler = ukprnClaimsHandler;
         }

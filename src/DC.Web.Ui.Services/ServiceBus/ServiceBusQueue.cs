@@ -8,18 +8,16 @@ namespace DC.Web.Ui.Services.ServiceBus
 {
     public class ServiceBusQueue : IServiceBusQueue
     {
-        private readonly ServiceBusQueueSettings _serviceBusQueueSettings;
-
-        public ServiceBusQueue(ServiceBusQueueSettings serviceBusQueueSettings)
+        private readonly IQueueClient _queueClient;
+        public ServiceBusQueue(IQueueClient queueClient)
         {
-            _serviceBusQueueSettings = serviceBusQueueSettings;
+            _queueClient = queueClient;
         }
 
         public async Task SendMessagesAsync(string messageToSend, string sessionId)
         {
             try
             {
-                var queueClient = new QueueClient(_serviceBusQueueSettings.ConnectionString, _serviceBusQueueSettings.Name);
 
                 var message = new Message(Encoding.UTF8.GetBytes(messageToSend))
                 {
@@ -27,8 +25,8 @@ namespace DC.Web.Ui.Services.ServiceBus
                 };
 
                 // Send the message to the queue.
-                await queueClient.SendAsync(message);
-                await queueClient.CloseAsync();
+                await _queueClient.SendAsync(message);
+                await _queueClient.CloseAsync();
             }
             catch (Exception exception)
             {
