@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3F79B509
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DC.Web.Ui.Tests", "DC.Web.Ui.Tests\DC.Web.Ui.Tests.csproj", "{199B6631-7B40-451F-8A79-055DFC32DF20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.Web.Ui.Services.Tests", "DC.Web.Ui.Services.Tests\DC.Web.Ui.Services.Tests.csproj", "{2CE02D63-694F-4A89-A979-C91D357E4210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DC.Web.Ui.Services.Tests", "DC.Web.Ui.Services.Tests\DC.Web.Ui.Services.Tests.csproj", "{2CE02D63-694F-4A89-A979-C91D357E4210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +47,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{199B6631-7B40-451F-8A79-055DFC32DF20} = {3F79B509-9627-4AA9-823A-53810E1C616A}
+		{2CE02D63-694F-4A89-A979-C91D357E4210} = {3F79B509-9627-4AA9-823A-53810E1C616A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E224BC0-6DEA-4892-9583-6CD5C07A0849}
