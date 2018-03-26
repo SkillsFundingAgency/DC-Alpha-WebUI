@@ -1,9 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Submit Ilr";
     ViewData["secondaryHeading"] = "ILR Submission";
-    
-}
 
+}
 
 <div class="grid-row">
     <div class="column-two-thirds">
@@ -11,14 +10,15 @@
         <h1 class="heading-xlarge">
             Submit ILR data
         </h1>
-        <div class="error-summary hidden" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" id="error" >
+        <div class="error-summary hidden" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" id="error">
 
             <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
                 Invalid Filename
             </h2>
 
             <p>
-                The UKPRN in the file name does not match the provider's UKPRN in the Hub</p>
+                The UKPRN in the file name does not match the provider's UKPRN in the Hub
+            </p>
             <ul class="error-summary-list">
                 <li><a href="#">Click here for help to fix the error</a></li>
             </ul>
@@ -52,7 +52,7 @@
                 <div id="file-details" class="hidden">
 
                     <div class="info-summary">
-                      
+
                         <h3 class="heading-medium  info-summary-heading">
                             Selected file
                         </h3>
@@ -66,7 +66,7 @@
                     <div id="submit-file-area">
                         <div class="form-group">
                             <div class="multiple-choice" data-target="contact-by-email">
-                                <input id="email-confirmation" name="email-confirmation" type="checkbox" value="email-confirmation" checked="" aria-controls="contact-by-email" aria-expanded="true" >
+                                <input id="email-confirmation" name="email-confirmation" type="checkbox" value="email-confirmation" checked="" aria-controls="contact-by-email" aria-expanded="true">
                                 <label for="email-confirmation">Send an email when the ILR file has been processed</label>
                             </div>
                             <div class="panel panel-border-narrow" id="contact-by-email" aria-hidden="false">
@@ -81,7 +81,6 @@
                         <input type="submit" class="button" name="confirm-upload" id="confirm-upload" value="Confirm and upload ILR file">
                     </div>
                 </div>
-
             </div>
         </form>
     </div>
@@ -104,13 +103,10 @@
                 <p class="font-small">R06 ends on Tuesday 6th February 2018 at 6.00 PM</p>
             </div> -->
 
-            <a href="/version-2/ilr-dates" id="ilr-dates" >See all Return dates</a>
+            <a href="/" id="ilr-dates">See all Return dates</a>
         </aside>
     </div>
 </div>
-
-
-
 
 <!-- Javascript -->
 <!--[if lte IE 8]><script src="/public/javascripts/bind.js"></script><![endif]-->
@@ -126,7 +122,6 @@
 
     <script src="~/js/jquery.min.js" asp-append-version="true"></script>
     <script src="~/js/govuk.min.js" asp-append-version="true"></script>
-    
 </environment>
 
 <script>
@@ -200,9 +195,5 @@
             })();
         }
 
-        // For opening email in another tab
-        // $('#upload-complete-button').on('click', function(e) {
-        // 	window.open('email','_blank');
-        // })
     })
 </script>
