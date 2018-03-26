@@ -27,6 +27,7 @@ namespace DC.Web.Ui.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 

@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-    //ViewData["secondaryHeading"] = "Data Collections";
+    ViewData["Title"] = "Submit Ilr";
     ViewData["secondaryHeading"] = "ILR Submission";
+
 }
 
 <div class="grid-row">
@@ -10,6 +10,19 @@
         <h1 class="heading-xlarge">
             Submit ILR data
         </h1>
+        <div class="error-summary hidden" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1" id="error">
+
+            <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+                Invalid Filename
+            </h2>
+
+            <p>
+                The UKPRN in the file name does not match the provider's UKPRN in the Hub
+            </p>
+            <ul class="error-summary-list">
+                <li><a href="#">Click here for help to fix the error</a></li>
+            </ul>
+        </div>
 
         <p>
             Use this page to upload and submit an <abbr title="Individual Learner Record">ILR</abbr> file for the current return period.
@@ -21,7 +34,7 @@
             <li>ILR files must be either <abbr title="Extensible Markup Language">XML</abbr> file format or a compressed ZIP file</li>
         </ul>
 
-        <form asp-controller="ILRSubmission" asp-action="Submit" method="post" enctype="multipart/form-data">
+        <form asp-controller="ILRSubmission" asp-action="Submit" method="post" enctype="multipart/form-data" id="ilrform">
             <div id="upload-v2">
                 <p class="panel panel-border-narrow">
                     <strong class="bold-small">
@@ -37,7 +50,9 @@
                 </div>
 
                 <div id="file-details" class="hidden">
+
                     <div class="info-summary">
+
                         <h3 class="heading-medium  info-summary-heading">
                             Selected file
                         </h3>
@@ -63,14 +78,8 @@
                         <input type="hidden" name="ilr-submission-status" value="processed">
                         <input type="hidden" name="file-date" value="">
 
-                        <input type="submit" class="button" name="confirm-upload" value="Confirm and upload ILR file">
+                        <input type="submit" class="button" name="confirm-upload" id="confirm-upload" value="Confirm and upload ILR file">
                     </div>
-                </div>
-
-                <div id="uploading-progress" class="hidden">
-                    <img id="loading-spinner" src="/public/images/loading-spinner.gif" width="40px">
-                    <p>Uploading <span class="file-name"></span></p>
-                    <p>Estimated time remaining: 14 minutes.</p>
                 </div>
             </div>
         </form>
@@ -78,7 +87,7 @@
 
     <div class="column-one-third">
         <aside class="govuk-related-items">
-            <h2 class="heading-medium">
+            <h2 class="heading-medium" id="return-period">
                 Return period 1
 
                 (R01)
@@ -86,7 +95,7 @@
             </h2>
             <!-- <h2 class="heading-medium">Return period 6 (R06)</h2> -->
             <div class="data">
-                <span class="data-item bold-large">15 days</span>
+                <span class="data-item bold-large" id="return-period-days">15 days</span>
                 <span class="data-item font-small">until close</span>
             </div>
 
@@ -94,13 +103,10 @@
                 <p class="font-small">R06 ends on Tuesday 6th February 2018 at 6.00 PM</p>
             </div> -->
 
-            <a href="/version-2/ilr-dates">See all Return dates</a>
+            <a href="/" id="ilr-dates">See all Return dates</a>
         </aside>
     </div>
 </div>
-
-
-
 
 <!-- Javascript -->
 <!--[if lte IE 8]><script src="/public/javascripts/bind.js"></script><![endif]-->
@@ -116,7 +122,6 @@
 
     <script src="~/js/jquery.min.js" asp-append-version="true"></script>
     <script src="~/js/govuk.min.js" asp-append-version="true"></script>
-    
 </environment>
 
 <script>
@@ -190,9 +195,5 @@
             })();
         }
 
-        // For opening email in another tab
-        // $('#upload-complete-button').on('click', function(e) {
-        // 	window.open('email','_blank');
-        // })
     })
 </script>

@@ -13,7 +13,7 @@
                 ILR data submitted
             </h1>
 
-            <p class="font-medium">
+            <p class="font-medium" id="progress-update">
                 Your ILR submission for Return period 1
 
                 (R01)
@@ -28,24 +28,24 @@
             <tbody>
                 <tr>
                     <td><span class="bold">File name</span></td>
-                    <td>@Html.DisplayFor(model => model.Filename)</td>
+                    <td id="file-name" >@Html.DisplayFor(model => model.Filename)</td>
                 </tr>
                 <tr>
                     <td><span class="bold">Submission reference</span></td>
-                    <td>@Html.DisplayFor(model => model.CorrelationId)</td>
+                    <td id="file-correlationId" >@Html.DisplayFor(model => model.CorrelationId)</td>
                 </tr>
                 <tr>
                     <td><span class="bold">File size</span></td>
-                    <td>@Html.DisplayFor(model => model.FileSize) KB</td>
+                    <td id="file-size">@Html.DisplayFor(model => model.FileSize) KB</td>
                 </tr>
                 <tr>
                     <td><span class="bold">Date and time</span></td>
-                    <td>@Html.DisplayFor(model => model.SubmissionDateTime)</td>
+                    <td id="file-submissiondate" >@Html.DisplayFor(model => model.SubmissionDateTime)</td>
                 </tr>
             </tbody>
         </table>
         <p>
-            @Html.ActionLink("Click here to see detailed status", "Index", "AppLogs", new { correlationId = Model.CorrelationId })
+            @Html.ActionLink("Click here to see detailed status", "Index", "AppLogs", new { id="detailed-link", correlationId = Model.CorrelationId })
         </p>
         <h2 class="heading-medium">What happens next?</h2>
         <p>You will receive an email notification once your file has been processed.</p>

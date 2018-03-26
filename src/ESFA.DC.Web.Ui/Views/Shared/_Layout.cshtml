@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>GOV.UK - @ViewData["Title"] - DCT.ILR.ValidationService.TestWebClient</title>
+    <title>@ViewData["Title"]</title>
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" media="screen" href="~/assets/stylesheets/govuk-template.css" /><!--<![endif]-->
     <!--[if IE 6]><link rel="stylesheet" media="screen" href="~/assets/stylesheets/govuk-template-ie6.css"/><![endif]-->
@@ -65,7 +65,7 @@
                 </div>
                 <div class="header-proposition">
                     <div class="content">
-                        <a href="/govuk_template/" id="proposition-name">Data Collections</a>
+                        <a href="/" id="proposition-name">Data Collections</a>
                     </div>
                 </div>
 
@@ -94,9 +94,9 @@
         </div>
         @if (@User.Identity.IsAuthenticated)
         {
-            <h1 class="heading-large">
+            <h1 class="heading-large" id="display-name">
                 @User.DisplayName()
-                <span class="heading-secondary">
+                <span class="heading-secondary" id="ukprn">
                     UKPRN: @User.Ukprn()
                 </span>
             </h1>
@@ -125,7 +125,7 @@
     <div id="global-app-error" class="app-error hidden"></div>
     <script src="~/assets/javascripts/govuk/govuk-template.js"></script>
 
-
+    <input type="hidden" id="version" value="@Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion"/>
     <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>
 </body>
 </html>
