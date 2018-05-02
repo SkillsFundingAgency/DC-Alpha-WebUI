@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DC.Web.Ui.ClaimTypes;
-using DC.Web.Ui.Security;
-using DC.Web.Ui.Settings;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.WsFederation;
+﻿using DC.Web.Ui.ClaimTypes;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DC.Web.Ui.StartupConfiguration
 {
     public static class AuthorisationStartup
     {
-        
         public static void AddAndConfigureAuthorisation(this IServiceCollection services)
         {
             services.AddAuthorization(options =>
@@ -22,7 +13,5 @@ namespace DC.Web.Ui.StartupConfiguration
                 options.AddPolicy(PolicyTypes.FileSubmission, policy => policy.RequireClaim(IdamsClaimTypes.Ukprn));
             });
         }
-
-
     }
 }

@@ -10,9 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
 using DC.Web.Ui.Extensions;
-using DC.Web.Ui.Services.AppLogs;
 using DC.Web.Ui.Settings.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace DC.Web.Ui
 {

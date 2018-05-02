@@ -1,5 +1,4 @@
-﻿using DC.Web.Ui.Settings.Models;
-using Microsoft.Azure.ServiceBus;
+﻿using Microsoft.Azure.ServiceBus;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +17,6 @@ namespace DC.Web.Ui.Services.ServiceBus
         {
             try
             {
-
                 var message = new Message(Encoding.UTF8.GetBytes(messageToSend))
                 {
                     SessionId = sessionId

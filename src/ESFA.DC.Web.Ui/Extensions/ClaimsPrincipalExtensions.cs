@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using DC.Web.Ui.ClaimTypes;
-using DC.Web.Ui.Services.Models;
 
 namespace DC.Web.Ui.Extensions
 {

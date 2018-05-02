@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using DC.Web.Ui.Services.ServiceBus;
-using DC.Web.Ui.Settings.Models;
 using FluentAssertions;
 using Microsoft.Azure.ServiceBus;
 using Moq;

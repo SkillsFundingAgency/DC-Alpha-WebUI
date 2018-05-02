@@ -1,6 +1,4 @@
 ﻿using DC.Web.Ui.Controllers;
-using DC.Web.Ui.Models;
-using DC.Web.Ui.Services.Models;
 using DC.Web.Ui.ViewModels;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;

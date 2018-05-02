@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DC.Web.Ui.Models;
-using DC.Web.Ui.Services.Models;
-using DC.Web.Ui.ViewModels;
+﻿using DC.Web.Ui.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

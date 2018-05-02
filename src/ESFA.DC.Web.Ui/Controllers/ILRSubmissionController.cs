@@ -1,6 +1,4 @@
 ﻿using DC.Web.Ui.ClaimTypes;
-using DC.Web.Ui.Models;
-using DC.Web.Ui.Services.ServiceBus;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +8,6 @@ using System.IO;
 using System.Threading.Tasks;
 using DC.Web.Ui.Extensions;
 using DC.Web.Ui.Services.SubmissionService;
-using DC.Web.Ui.Settings.Models;
 using DC.Web.Ui.ViewModels;
 
 namespace DC.Web.Ui.Controllers
@@ -27,7 +24,6 @@ namespace DC.Web.Ui.Controllers
 
         public IActionResult Index()
         {
-
             return View();
         }
 
@@ -68,6 +64,5 @@ namespace DC.Web.Ui.Controllers
             TempData["ilrSubmission"] = JsonConvert.SerializeObject(ilrFile);
             return RedirectToAction("Index","Confirmation");
         }
-
     }
 }

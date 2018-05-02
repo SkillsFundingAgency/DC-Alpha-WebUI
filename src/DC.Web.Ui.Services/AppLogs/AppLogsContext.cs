@@ -1,5 +1,4 @@
 ﻿using DC.Web.Ui.Services.Models;
-using DC.Web.Ui.Settings.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DC.Web.Ui.Services.AppLogs
@@ -10,6 +9,7 @@ namespace DC.Web.Ui.Services.AppLogs
 
         public AppLogsContext()
         { }
+
         public AppLogsContext(DbContextOptions options)
         : base(options)
         {

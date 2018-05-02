@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using DC.Web.Ui.Controllers;
 using DC.Web.Ui.Services.SubmissionService;
@@ -39,7 +37,6 @@ namespace DC.Web.Ui.Tests
             result.Should().BeOfType(typeof(RedirectToActionResult));
 
             controller.TempData.ContainsKey("ilrSubmission").Should().BeTrue();
-            //controller.TempData["ilrSubmission"].Should().BeAssignableTo<IlrFileViewModel>();
             var ilrFile = JsonConvert.DeserializeObject<IlrFileViewModel>(controller.TempData["ilrSubmission"].ToString());
             ilrFile.Should().BeAssignableTo<IlrFileViewModel>();
 
@@ -74,7 +71,6 @@ namespace DC.Web.Ui.Tests
 
             var result = controller.Submit(mockFile.Object).Result;
             result.Should().BeOfType(typeof(ViewResult));
-
         }
     }
 }

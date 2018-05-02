@@ -1,10 +1,8 @@
-﻿using DC.Web.Ui.Settings;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.WsFederation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using DC.Web.Ui.Settings.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace DC.Web.Ui.StartupConfiguration
 {

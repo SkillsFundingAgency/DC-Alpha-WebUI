@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using DC.Web.Ui.Controllers;
-using DC.Web.Ui.Services;
 using DC.Web.Ui.Services.AppLogs;
 using DC.Web.Ui.Services.ClaimHandlerService;
 using DC.Web.Ui.Services.ServiceBus;
@@ -29,8 +28,6 @@ namespace DC.Web.Ui.Ioc
                 })
                 .As<IQueueClient>()
                 .InstancePerLifetimeScope();
-
         }
-
     }
 }

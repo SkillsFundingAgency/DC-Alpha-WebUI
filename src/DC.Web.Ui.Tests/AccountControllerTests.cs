@@ -1,17 +1,9 @@
 ﻿using DC.Web.Ui.Controllers;
-using System;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading;
-using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
-using System.IO;
 using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.AspNetCore.Routing;
 
 namespace DC.Web.Ui.Tests
 {

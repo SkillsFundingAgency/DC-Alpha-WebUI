@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using DC.Web.Ui.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace DC.Web.Ui.Controllers
 {
@@ -15,9 +12,6 @@ namespace DC.Web.Ui.Controllers
             }
            
             return View();
-            
-            
         }
-
     }
 }

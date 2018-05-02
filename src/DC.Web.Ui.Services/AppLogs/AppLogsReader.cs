@@ -11,8 +11,8 @@ namespace DC.Web.Ui.Services.AppLogs
         //for testing
         public AppLogsReader()
         {
-            
         }
+
         public AppLogsReader(AppLogsContext appLogsContext)
         {
             _context = appLogsContext;

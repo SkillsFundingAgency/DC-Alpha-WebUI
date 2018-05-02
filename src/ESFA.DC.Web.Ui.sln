@@ -15,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DC.Web.Ui.Tests", "DC.Web.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DC.Web.Ui.Services.Tests", "DC.Web.Ui.Services.Tests\DC.Web.Ui.Services.Tests.csproj", "{2CE02D63-694F-4A89-A979-C91D357E4210}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC3949A0-78FC-4948-B65E-4E6DA37BF5BB}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
